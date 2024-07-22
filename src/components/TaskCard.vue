@@ -3,7 +3,7 @@
     :title="tooltipTitle"
     class="task-card isDraggable"
     draggable="true"
-    @contextmenu="onContextMenu"
+    @contextmenu.prevent="onContextMenu"
     @dblclick="ondblclick"
     @dragstart="onDragStart"
     @dragend="onDrop"

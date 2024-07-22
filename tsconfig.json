@@ -16,7 +16,8 @@
     "sourceMap": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "*": ["node_modules/*"]
     },
     "lib": ["esnext", "dom", "dom.iterable", "scripthost", "webworker"]
   },
