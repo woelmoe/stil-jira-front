@@ -17,9 +17,11 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["./src/*"],
-      "*": ["node_modules/*"]
     },
-    "lib": ["esnext", "dom", "dom.iterable", "scripthost", "webworker"]
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost", "webworker"],
+    "types": [
+      "node"
+    ]
   },
   "include": [
     "src/**/*.ts",
