@@ -1,7 +1,7 @@
 import { ITask, ITaskNoId } from '@/assets/interfaces/interface'
 
 console.log(import.meta.env)
-const port = 3000
+const port = import.meta.env.VITE_BACK_PORT ?? 3000
 const addr = `http://localhost:${port}`
 console.log(addr)
 export const useApi = () => {
