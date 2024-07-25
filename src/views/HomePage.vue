@@ -47,7 +47,7 @@ import ColumnTitle from '@/components/ColumnTitle.vue'
 import { TaskType } from '@/assets/interfaces/interface'
 import { useMainStore } from '@/stores/main'
 import { RoutePaths, router } from '@/router'
-import { nextTick, onMounted, ref } from 'vue'
+import { nextTick, onMounted, ref, watch } from 'vue'
 import AppTooltip from '@/components/UI/AppTooltip.vue'
 
 const store = useMainStore()
@@ -70,8 +70,18 @@ function hideTooltip() {
   isTooltipActive.value = false
 }
 
+function checkTooltipActive() {
+  isTooltipActive.value = store.taskList.length === 0
+}
+const unwatcher = watch(
+  () => store.taskList.length,
+  () => {
+    checkTooltipActive()
+    if (isTooltipActive.value) unwatcher()
+  }
+)
 onMounted(() => {
-  if (store.taskList.length === 0) isTooltipActive.value = true
+  checkTooltipActive()
 })
 </script>
 
