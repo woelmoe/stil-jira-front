@@ -71,13 +71,17 @@ function hideTooltip() {
 }
 
 function checkTooltipActive() {
-  isTooltipActive.value = store.taskList.length === 0
+  if (store.taskList.length === 0) isTooltipActive.value = true
 }
 const unwatcher = watch(
   () => store.taskList.length,
   () => {
     checkTooltipActive()
-    if (isTooltipActive.value) unwatcher()
+    console.log('sdfds')
+    if (isTooltipActive.value || store.taskList.length !== 0) {
+      unwatcher()
+      isTooltipActive.value = false
+    }
   }
 )
 onMounted(() => {
