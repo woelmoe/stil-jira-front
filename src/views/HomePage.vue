@@ -77,7 +77,6 @@ const unwatcher = watch(
   () => store.taskList.length,
   () => {
     checkTooltipActive()
-    console.log('sdfds')
     if (isTooltipActive.value || store.taskList.length !== 0) {
       unwatcher()
       isTooltipActive.value = false
