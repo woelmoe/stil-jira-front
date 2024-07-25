@@ -22,10 +22,14 @@
           class="home-page__task-container"
           v-for="column in columns"
           :key="column"
-          @dblclick="onDblClickColumn($event, column)"
-          @dragenter="onDragEnter(column)"
+          @dblclick="onDblClickColumn($event, column as TaskType)"
+          @dragenter="onDragEnter(column as TaskType)"
         >
           <TaskContainer :type="column" />
+          <AppTooltip
+            v-if="column === TaskType.todo"
+            title="Чтобы создать таску, выполните двойное нажатие правой клавиши мыши в этой колонке"
+          />
         </div>
       </div>
     </div>
@@ -39,6 +43,7 @@ import { TaskType } from '@/assets/interfaces/interface'
 import { useMainStore } from '@/stores/main'
 import { RoutePaths, router } from '@/router'
 import { nextTick } from 'vue'
+import AppTooltip from '@/components/UI/AppTooltip.vue'
 
 const store = useMainStore()
 const columns = Object.values(TaskType)

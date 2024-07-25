@@ -26,7 +26,6 @@ export const useApi = () => {
   }
 
   async function editTask(task: ITask) {
-    console.log(task)
     return await fetch(`${addr}/tasks/put`, {
       method: 'POST',
       headers: {

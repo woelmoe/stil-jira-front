@@ -8,9 +8,17 @@ $black-color: #181818;
 /* gray */
 
 $gray-color-1: #dcdcdc;
-$gray-color-2: #E7E7E7;
+$gray-color-2: #e7e7e7;
 $gray-color-3: #778899;
-$gray-color-4: #AEAEAE;
+$gray-color-4: #aeaeae;
+
+/** shadow color */
+
+$shadow-color: rgba(34, 60, 80, 0.2);
+
+/** shadow */
+
+$shadow: 4rem 4rem 8rem 0 $shadow-color;
 
 /* blue-color */
 
