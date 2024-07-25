@@ -29,7 +29,8 @@
           <Transition name="fade">
             <AppTooltip
               v-if="column === TaskType.todo && isTooltipActive"
-              v-click-outside="onTooltipClickOutside"
+              v-click-outside="hideTooltip"
+              @click="hideTooltip"
               title="Чтобы создать таску, выполните двойное нажатие правой клавиши мыши в этой колонке"
               class="home-page__main-tooltip"
             />
@@ -65,7 +66,7 @@ async function onDragEnter(column: TaskType) {
   store.draggableTask.type = column
 }
 
-function onTooltipClickOutside() {
+function hideTooltip() {
   isTooltipActive.value = false
 }
 

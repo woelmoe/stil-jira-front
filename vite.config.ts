@@ -11,6 +11,7 @@ export default defineConfig({
         additionalData: `
             @import "@/assets/css/_variables.scss";
             @import "@/assets/css/_resets.scss";
+            @import "@/assets/css/_transitions.scss";
           `
       }
     }

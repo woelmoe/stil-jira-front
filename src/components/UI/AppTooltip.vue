@@ -22,6 +22,7 @@ defineProps<IProps>()
   border-radius: 16rem;
   padding: 8rem 8rem;
   box-shadow: $shadow;
+  cursor: pointer;
 
   display: flex;
   align-items: center;
