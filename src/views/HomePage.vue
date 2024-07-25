@@ -26,10 +26,14 @@
           @dragenter="onDragEnter(column as TaskType)"
         >
           <TaskContainer :type="column" />
-          <AppTooltip
-            v-if="column === TaskType.todo"
-            title="Чтобы создать таску, выполните двойное нажатие правой клавиши мыши в этой колонке"
-          />
+          <Transition name="fade">
+            <AppTooltip
+              v-if="column === TaskType.todo && isTooltipActive"
+              v-click-outside="onTooltipClickOutside"
+              title="Чтобы создать таску, выполните двойное нажатие правой клавиши мыши в этой колонке"
+              class="home-page__main-tooltip"
+            />
+          </Transition>
         </div>
       </div>
     </div>
@@ -42,7 +46,7 @@ import ColumnTitle from '@/components/ColumnTitle.vue'
 import { TaskType } from '@/assets/interfaces/interface'
 import { useMainStore } from '@/stores/main'
 import { RoutePaths, router } from '@/router'
-import { nextTick } from 'vue'
+import { nextTick, onMounted, ref } from 'vue'
 import AppTooltip from '@/components/UI/AppTooltip.vue'
 
 const store = useMainStore()
@@ -50,6 +54,7 @@ const columns = Object.values(TaskType)
 
 const tableWidth = 700
 
+const isTooltipActive = ref(false)
 function onDblClickColumn(e: Event, column: TaskType) {
   if (column === TaskType.todo) router.push({ name: RoutePaths.taskForm })
 }
@@ -59,6 +64,14 @@ async function onDragEnter(column: TaskType) {
   if (!store.draggableTask) return
   store.draggableTask.type = column
 }
+
+function onTooltipClickOutside() {
+  isTooltipActive.value = false
+}
+
+onMounted(() => {
+  if (store.taskList.length === 0) isTooltipActive.value = true
+})
 </script>
 
 <style scoped lang="scss">
@@ -98,6 +111,13 @@ $gap: 8rem;
     height: 100%;
     width: 3rem;
     background-color: #fff;
+  }
+
+  &__main-tooltip {
+    position: absolute;
+    width: 200rem;
+    left: 150rem;
+    top: 10rem;
   }
 }
 </style>
