@@ -1,8 +1,8 @@
 import { ITask, ITaskNoId } from '@/assets/interfaces/interface'
 
-const DEFAULT_ADDR = 'http://localhost:3000'
-const addr = import.meta.env.VITE_FRONT_URL ?? DEFAULT_ADDR
-console.log(import.meta.env)
+const port = import.meta.env.VITE_BACK_PORT ?? 3000
+const domain = import.meta.env.VITE_DOMAIN ?? 'localhost'
+const addr = `http://${domain}:${port}`
 console.log(addr)
 export const useApi = () => {
   async function getTasks() {
