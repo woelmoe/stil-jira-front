@@ -1,6 +1,6 @@
 import { ITask, ITaskNoId } from '@/assets/interfaces/interface'
 
-const DEFAULT_ADDR = 'http://localhost:3000'
+const DEFAULT_ADDR = 'http://localhost:3004'
 const addr = import.meta.env.VITE_FRONT_URL ?? DEFAULT_ADDR
 console.log(import.meta.env)
 console.log(addr)
